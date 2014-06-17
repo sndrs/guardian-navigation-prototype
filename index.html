@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8" />
     <title>New navigation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="jquery-2.1.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.js-new-navigation-toggle').on('click', function(e) {
+            e.preventDefault;
+            newNavParent = $(this).parents('.new-navigation');
+            if (newNavParent.hasClass('new-navigation--collapsed')) {
+                newNavParent.removeClass('new-navigation--collapsed').addClass('new-navigation--expanded');
+            } else {
+                newNavParent.removeClass('new-navigation--expanded').addClass('new-navigation--collapsed');
+            }
+        });
+    });
+    </script>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -10,6 +25,11 @@
         <div class="gs-container">
             <div class="new-navigation__inner">
                 <div class="new-navigation__container">
+                    <div class="local-navigation">
+                        <a class="local-navigation__parent new-navigation__current" href="/">home</a>
+                    </div>
+                </div>
+                <div class="new-navigation__container">
                     <!-- ul.global-navigation>li.global-navigation__section*8>((a.global-navigation__title>lorem1)+(ul.global-navigation__children>li.global-navigation__child*3>a.global-navigation__action>lorem1)) -->
                     <ul class="global-navigation">
                         <li class="global-navigation__section">
@@ -146,7 +166,6 @@
                                 <li class="global-navigation__child">
                                     <a class="global-navigation__action" href="/media">media</a>
                                 </li>
-
                             </ul>
                         </li>
                         <li class="global-navigation__section">
@@ -254,9 +273,9 @@
             <div class="new-navigation__inner">
                 <div class="new-navigation__container">
                     <div class="local-navigation">
-                        <a class="local-navigation__parent" href="/sport">sport</a>
+                        <a class="local-navigation__parent new-navigation__current" href="/sport">sport</a>
                         <ul class="local-navigation__children">
-                            <li class="local-navigation__child local-navigation__child--current">
+                            <li class="local-navigation__child">
                                 <a class="local-navigation__action" href="/sport/rugbyleague">rugby league</a>
                             </li>
                             <li class="local-navigation__child"><a class="local-navigation__action" href="/football">football</a></li>
@@ -274,6 +293,12 @@
                 <div class="new-navigation__container">
                     <!-- ul.global-navigation>li.global-navigation__section*8>((a.global-navigation__title>lorem1)+(ul.global-navigation__children>li.global-navigation__child*3>a.global-navigation__action>lorem1)) -->
                     <ul class="global-navigation">
+                        <li class="global-navigation__section">
+                            <a href="/" class="global-navigation__title">home</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
                         <li class="global-navigation__section">
                             <a href="/uk-news" class="global-navigation__title">UK</a>
                             <ul class="global-navigation__children">
@@ -512,12 +537,530 @@
     </div>
 
     <hr />
-    <div class="new-navigation new-navigation--expanded">
+    <div class="new-navigation new-navigation--collapsed">
         <div class="gs-container">
             <div class="new-navigation__inner">
                 <div class="new-navigation__container">
                     <div class="local-navigation">
-                        <a class="local-navigation__parent" href="/sport">sport</a>
+                        <a class="local-navigation__parent new-navigation__current" href="/education">education</a>
+                        <ul class="local-navigation__children">
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/education/students">students</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-navigation__container">
+                    <!-- ul.global-navigation>li.global-navigation__section*8>((a.global-navigation__title>lorem1)+(ul.global-navigation__children>li.global-navigation__child*3>a.global-navigation__action>lorem1)) -->
+                    <ul class="global-navigation">
+
+                        <li class="global-navigation__section">
+                            <a href="/" class="global-navigation__title">home</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/uk-news" class="global-navigation__title">UK</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/world" class="global-navigation__title">world</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/europe-news">europe</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/usa">US</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/americas">americas</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/asia">asia</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/australia">australia</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/africa">africa</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/middleeast">middle east</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/sport" class="global-navigation__title">sport</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football">football</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/world-cup-2014">world cup</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/rugby-union">rugby union</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/rugbyleague">rugby league</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/cricket">cricket</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/tennis">tennis</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/cycling">cycling</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/boxing">boxing</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/us-sport">US sports</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/formulaone">formula one</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/football" class="global-navigation__title">football</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/world-cup-2014">world cup</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/live">live scores</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/tables">tables</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/competitions">competitions</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/results">results</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/fixtures">fixtures</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/teams">clubs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/commentisfree" class="global-navigation__title">comment</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/culture" class="global-navigation__title">culture</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/film">film</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/tv-and-radio">tv &amp; radio</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/music">music</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/books">books</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/artanddesign">art &amp; design</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/stage">stage</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/business" class="global-navigation__title">economy</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/business/stock-markets">markets</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/business/companies">companies</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/media">media</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/lifeandstyle" class="global-navigation__title">life</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/food-and-drink">food</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/health-and-wellbeing">health</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/love-and-sex">love &amp; sex</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/family">family</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/women">women</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/home-and-garden">home &amp; garden</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/environment" class="global-navigation__title">environment</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/cities">cities</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/global-development">development</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/technology" class="global-navigation__title">tech</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/technology/games">games</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/money" class="global-navigation__title">money</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/property">property</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/savings">savings</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/debt">borrowing</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/work-and-careers">careers</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/travel" class="global-navigation__title">travel</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/uk">UK</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/europe">europe</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/usa">US</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/fashion" class="global-navigation__title">fashion</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/science" class="global-navigation__title">science</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <a class="new-navigation__toggle js-new-navigation-toggle" href="#footer-nav">…<span class="u-h">All sections</span></a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="new-navigation new-navigation--collapsed">
+        <div class="gs-container">
+            <div class="new-navigation__inner">
+                <div class="new-navigation__container">
+                    <div class="local-navigation">
+                        <a class="local-navigation__parent new-navigation__current" href="/education">education</a>
+                        <ul class="local-navigation__children">
+                            <li class="local-navigation__child local-navigation__child--current"><a class="local-navigation__action" href="/education/students">students</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-navigation__container">
+                    <!-- ul.global-navigation>li.global-navigation__section*8>((a.global-navigation__title>lorem1)+(ul.global-navigation__children>li.global-navigation__child*3>a.global-navigation__action>lorem1)) -->
+                    <ul class="global-navigation">
+
+                        <li class="global-navigation__section">
+                            <a href="/" class="global-navigation__title">home</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/uk-news" class="global-navigation__title">UK</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/world" class="global-navigation__title">world</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/europe-news">europe</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/usa">US</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/americas">americas</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/asia">asia</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/australia">australia</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/africa">africa</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/middleeast">middle east</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/sport" class="global-navigation__title">sport</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football">football</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/world-cup-2014">world cup</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/rugby-union">rugby union</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/rugbyleague">rugby league</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/cricket">cricket</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/tennis">tennis</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/cycling">cycling</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/boxing">boxing</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/us-sport">US sports</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/formulaone">formula one</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/football" class="global-navigation__title">football</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/world-cup-2014">world cup</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/live">live scores</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/tables">tables</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/competitions">competitions</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/results">results</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/fixtures">fixtures</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/teams">clubs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/commentisfree" class="global-navigation__title">comment</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/culture" class="global-navigation__title">culture</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/film">film</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/tv-and-radio">tv &amp; radio</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/music">music</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/books">books</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/artanddesign">art &amp; design</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/stage">stage</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/business" class="global-navigation__title">economy</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/business/stock-markets">markets</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/business/companies">companies</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/media">media</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/lifeandstyle" class="global-navigation__title">life</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/food-and-drink">food</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/health-and-wellbeing">health</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/love-and-sex">love &amp; sex</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/family">family</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/women">women</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/home-and-garden">home &amp; garden</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/environment" class="global-navigation__title">environment</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/cities">cities</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/global-development">development</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/technology" class="global-navigation__title">tech</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/technology/games">games</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/money" class="global-navigation__title">money</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/property">property</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/savings">savings</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/debt">borrowing</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/work-and-careers">careers</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/travel" class="global-navigation__title">travel</a>
+                            <ul class="global-navigation__children">
+
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/uk">UK</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/europe">europe</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/usa">US</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/fashion" class="global-navigation__title">fashion</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/science" class="global-navigation__title">science</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <a class="new-navigation__toggle js-new-navigation-toggle" href="#footer-nav">…<span class="u-h">All sections</span></a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="new-navigation new-navigation--collapsed">
+        <div class="gs-container">
+            <div class="new-navigation__inner">
+                <div class="new-navigation__container">
+                    <div class="local-navigation">
+                        <a class="local-navigation__parent new-navigation__current" href="/sport">sport</a>
                         <ul class="local-navigation__children">
                             <li class="local-navigation__child local-navigation__child--current">
                                 <a class="local-navigation__action" href="/sport/rugbyleague">rugby league</a>
@@ -537,6 +1080,280 @@
                 <div class="new-navigation__container">
                     <!-- ul.global-navigation>li.global-navigation__section*8>((a.global-navigation__title>lorem1)+(ul.global-navigation__children>li.global-navigation__child*3>a.global-navigation__action>lorem1)) -->
                     <ul class="global-navigation">
+                        <li class="global-navigation__section">
+                            <a href="/" class="global-navigation__title">home</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/uk-news" class="global-navigation__title">UK</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/world" class="global-navigation__title">world</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/europe-news">europe</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/usa">US</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/americas">americas</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/asia">asia</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/australia">australia</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/africa">africa</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/world/middleeast">middle east</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/sport" class="global-navigation__title">sport</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football">football</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/world-cup-2014">world cup</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/rugby-union">rugby union</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/rugbyleague">rugby league</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/cricket">cricket</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/tennis">tennis</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/cycling">cycling</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/boxing">boxing</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/us-sport">US sports</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/sport/formulaone">formula one</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/football" class="global-navigation__title">football</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/world-cup-2014">world cup</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/live">live scores</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/tables">tables</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/competitions">competitions</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/results">results</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/fixtures">fixtures</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/football/teams">clubs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/commentisfree" class="global-navigation__title">comment</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/culture" class="global-navigation__title">culture</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/film">film</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/tv-and-radio">tv &amp; radio</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/music">music</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/books">books</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/artanddesign">art &amp; design</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/stage">stage</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/business" class="global-navigation__title">economy</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/business/stock-markets">markets</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/business/companies">companies</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/media">media</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/lifeandstyle" class="global-navigation__title">life</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/food-and-drink">food</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/health-and-wellbeing">health</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/love-and-sex">love &amp; sex</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/family">family</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/women">women</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/lifeandstyle/home-and-garden">home &amp; garden</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/environment" class="global-navigation__title">environment</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/cities">cities</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/global-development">development</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/technology" class="global-navigation__title">tech</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/technology/games">games</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/money" class="global-navigation__title">money</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/property">property</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/savings">savings</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/debt">borrowing</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/money/work-and-careers">careers</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/travel" class="global-navigation__title">travel</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/uk">UK</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/europe">europe</a>
+                                </li>
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/travel/usa">US</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/fashion" class="global-navigation__title">fashion</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/science" class="global-navigation__title">science</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
+                        <li class="global-navigation__section">
+                            <a href="/education" class="global-navigation__title">education</a>
+                            <ul class="global-navigation__children">
+                                <li class="global-navigation__child">
+                                    <a class="global-navigation__action" href="/education/students">students</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <a class="new-navigation__toggle js-new-navigation-toggle" href="#footer-nav">…<span class="u-h">All sections</span></a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="new-navigation new-navigation--expanded">
+        <div class="gs-container">
+            <div class="new-navigation__inner">
+                <div class="new-navigation__container">
+                    <div class="local-navigation">
+                        <a class="local-navigation__parent new-navigation__current" href="/sport">sport</a>
+                        <ul class="local-navigation__children">
+                            <li class="local-navigation__child local-navigation__child--current">
+                                <a class="local-navigation__action" href="/sport/rugbyleague">rugby league</a>
+                            </li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/football">football</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/football/world-cup-2014">world cup</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/rugby-union">rugby union</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/cricket">cricket</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/tennis">tennis</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/cycling">cycling</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/boxing">boxing</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/us-sport">US sports</a></li>
+                            <li class="local-navigation__child"><a class="local-navigation__action" href="/sport/formulaone">formula one</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="new-navigation__container">
+                    <!-- ul.global-navigation>li.global-navigation__section*8>((a.global-navigation__title>lorem1)+(ul.global-navigation__children>li.global-navigation__child*3>a.global-navigation__action>lorem1)) -->
+                    <ul class="global-navigation">
+                        <li class="global-navigation__section">
+                            <a href="/" class="global-navigation__title">home</a>
+                            <ul class="global-navigation__children">
+
+                            </ul>
+                        </li>
                         <li class="global-navigation__section">
                             <a href="/uk-news" class="global-navigation__title">UK</a>
                             <ul class="global-navigation__children">
