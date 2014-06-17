@@ -1,0 +1,60 @@
+@import "bower_components/guss-css3/css3";
+@import "bower_components/guss-rem/rem";
+@import "bower_components/sass-mq/mq";
+@import "bower_components/guss-grid-system/grid-system";
+@import "bower_components/guss-colours/helpers";
+@import "bower_components/guss-colours/colours";
+@import "bower_components/guss-typography/helpers";
+@import "bower_components/guss-typography/font-scale";
+@import "normalize";
+@import "fonts";
+
+$c-neutral1: guss-colour(neutral-1);
+$c-newsDefault: guss-colour(news);
+$c-newsAccent: guss-colour(news-2);
+
+$mq-breakpoints: mq-add-breakpoint(mobileLandscape, 480px);
+
+html {
+    font-family: $serif;
+    // Make type rendering look crisper
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+    // Set baseline font size to 10px
+    // This is used as a baseline for rem (root ems) values
+    font-size: 62.5%;
+
+    // For IE11 to do the math properly
+    // See http://bit.ly/1g4X0bX — thanks @7studio and @dawitti
+    font-size: calc(1em * .625);
+}
+body {
+    color: $c-neutral1;
+    font-size: 1.6em; // Bump font-size back up to 16px
+    line-height: 1.5;
+}
+
+@include grid-system;
+
+@import "links";
+
+
+// Hide content visually, still readable by screen readers
+@mixin u-h {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+}
+
+%u-h,
+.u-h {
+    @include u-h;
+}
+
+@import "new-navigation";

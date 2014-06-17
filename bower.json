@@ -1,0 +1,22 @@
+{
+  "name": "prototype",
+  "version": "0.0.0",
+  "authors": [
+    "Kaelig <kaelig@deloumeau.fr>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sass-mq": "~2.0.0"
+  },
+  "devDependencies": {
+    "guss": "~1.2.0"
+  }
+}
