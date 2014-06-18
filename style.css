@@ -412,6 +412,13 @@ a,
   position: absolute !important;
   width: 1px !important; }
 
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+/* Configuration
+   ========================================================================== */
+/* Overrides (to be incorporated into the global CSS when killing the old nav)
+   ========================================================================== */
 .has-new-navigation .l-header {
   border-bottom: 0; }
 @media all and (max-width: 46.24em) {
@@ -421,6 +428,8 @@ a,
     .has-new-navigation .container--first .container__header {
       display: none; } }
 
+/* Styles common to all states
+   ========================================================================== */
 .new-navigation {
   position: relative;
   z-index: 1;
@@ -498,7 +507,7 @@ a,
     padding-right: 16px;
     padding-right: 1.6rem; }
     .local-navigation__child--current .local-navigation__action:before {
-      content: "›";
+      content: '›';
       display: inline-block;
       font-size: 26px;
       margin-right: 16px;
@@ -545,6 +554,8 @@ a,
 .global-navigation__action {
   float: left; }
 
+/* State: collapsed
+   ========================================================================== */
 .new-navigation--collapsed {
   overflow: hidden; }
   .new-navigation--collapsed,
@@ -574,6 +585,8 @@ a,
   .new-navigation--collapsed .global-navigation__action {
     color: #ffffff; }
 
+/* State: expanded
+   ========================================================================== */
 .new-navigation--expanded {
   z-index: 2; }
   .new-navigation--expanded .new-navigation__inner {
@@ -740,12 +753,16 @@ a,
       .new-navigation--expanded .global-navigation__section:nth-child(6n+1) {
         clear: both; } }
 
+/* Toggle button
+   ========================================================================== */
 .new-navigation__toggle {
   position: absolute;
   width: 1em;
   right: 0;
   top: 0;
   background: #187aa5;
+  -moz-background-clip: content-box;
+  -webkit-background-clip: content-box;
   background-clip: content-box;
   text-align: center;
   font-size: 36px;
