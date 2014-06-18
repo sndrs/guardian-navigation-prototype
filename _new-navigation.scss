@@ -1,21 +1,21 @@
 $c-navigation-background: mix(guss-colour(guardian-brand), #ffffff, 85%);
 $c-navigation-action: guss-colour(neutral-1);
 
-$c-local-navigation-background: guss-colour(neutral-4);
+$c-local-navigation-background: guss-colour(neutral-7);
 $c-local-navigation-action: guss-colour(neutral-1);
 
-$c-local-navigation-parent-background: guss-colour(neutral-1);
+$c-local-navigation-parent-background: $c-navigation-background;
 
 $c-local-navigation-current-background: $c-local-navigation-parent-background;
 $c-local-navigation-child-current: #ffffff;
 
 $c-global-navigation-background: mix(guss-colour(tone-news-2), guss-colour(tone-news-1));
 $c-global-navigation-action: guss-colour(neutral-2);
-$c-global-navigation-border: guss-colour(neutral-6);
+$c-global-navigation-border: guss-colour(neutral-5);
 
 $c-navigation-toggle-background: mix(guss-colour(tone-news-2), guss-colour(tone-news-1), 33%);
 $c-navigation-toggle-icon: #ffffff;
-$c-navigation-toggle-shadow: rgba(#000000, .4);
+$c-navigation-toggle-shadow: rgba(#000000, .3);
 
 $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
 
@@ -70,8 +70,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
     padding: 0;
 }
 
-.local-navigation,
-.global-navigation__children {
+.local-navigation {
     float: left;
 }
 
@@ -90,7 +89,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
     background: $c-local-navigation-parent-background;
 
     @include rem((
-        padding-right: $gs-gutter/2,
+        padding-right: $new-navigation-h-space-between-items,
         padding-left: $gs-gutter/2,
         margin-left: -$gs-gutter/2
     ));
@@ -110,24 +109,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
     background: $c-local-navigation-background;
 }
 .local-navigation__child {
-    float: left;
-    @include rem((
-        margin-right: $new-navigation-h-space-between-items
-    ));
 
-    &:last-child {
-        margin-right: 0;
-        .local-navigation__action {
-            @include rem((
-                padding-right: $new-navigation-h-space-between-items
-            ));
-        }
-    }
-}
-.local-navigation__child--current {
-    @include rem((
-        margin-right: $gs-gutter/2
-    ));
 }
 .local-navigation__action {
     color: $c-local-navigation-action;
@@ -137,9 +119,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
         background: $c-local-navigation-current-background;
         color: $c-local-navigation-child-current;
         @include rem((
-            padding-right: $gs-gutter/2,
-            padding-left: $gs-gutter/2,
-            margin-left: -$gs-gutter/2
+            padding-right: $new-navigation-h-space-between-items
         ));
 
         &:before {
@@ -147,7 +127,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
             display: inline-block;
             font-size: 26px;
             @include rem((
-                margin-right: $new-navigation-h-space-between-items/2
+                margin-right: $new-navigation-h-space-between-items
             ));
             line-height: 1;
             bottom: -2px;
@@ -155,22 +135,27 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
         }
     }
 }
-
 .local-navigation__parent,
 .local-navigation__action,
 .global-navigation__title,
 .global-navigation__action {
-    float: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.local-navigation__parent,
+.local-navigation__action {
+    display: table-cell;
 }
 
 .global-navigation {
     background: #ffffff;
 }
-
+.local-navigation__child,
 .global-navigation__section {
-    float: left;
+    white-space: nowrap;
+    display: table-cell;
     @include rem((
-        margin-right: $new-navigation-h-space-between-items
+        padding-right: $new-navigation-h-space-between-items
     ));
 }
 .global-navigation__section--current {
@@ -212,8 +197,13 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
             padding-left: $new-navigation-h-space-between-items,
         ));
     }
-    .local-navigation__child--current:first-child {
-        padding-left: 0;
+    .local-navigation__child--current {
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
     }
     .global-navigation {
         overflow: hidden;
@@ -277,6 +267,18 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
             ));
         }
     }
+    .local-navigation__child--current .local-navigation__action {
+        @include rem((
+            padding-left: $gs-gutter/2,
+            margin-left: -$gs-gutter/2
+        ));
+        @include mq(mobileLandscape) {
+            @include rem((
+                padding-left: $gs-gutter,
+                margin-left: -$gs-gutter
+            ));
+        }
+    }
     .global-navigation {
         clear: both;
         @include clearfix;
@@ -318,6 +320,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
         }
     }
     .global-navigation__section {
+        display: block;
         clear: both;
         float: none;
         margin-right: 0;
@@ -356,13 +359,18 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
         .global-navigation__section {
             @include box-sizing(border-box);
             float: left;
-            clear: none;
-            width: 25%;
             @include rem((
                 padding-left: $gs-gutter/2,
                 padding-right: $gs-gutter/2
             ));
+        }
+        .local-navigation__child,
+        .global-navigation__section {
+            width: 25%;
 
+            &:nth-child(n) {
+                clear: none;
+            }
             &:nth-child(4n+1) {
                 clear: both;
             }
@@ -386,10 +394,6 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1);
             &:nth-child(5n+1) {
                 clear: both;
             }
-        }
-
-        .local-navigation__child {
-            
         }
     }
     @include mq(wide) {
