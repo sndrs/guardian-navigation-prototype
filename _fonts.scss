@@ -21,6 +21,17 @@
     font-stretch: normal;
 }
 @font-face {
+    font-family: 'EgyptianHeadline';
+    src: url('fonts/Guardian Egyp Web-Medium.eot');
+    src: url('fonts/Guardian Egyp Web-Medium.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Guardian Egyp Web-Medium.woff') format('woff'),
+         url('fonts/Guardian Egyp Web-Medium.ttf') format('truetype'),
+         url('fonts/Guardian Egyp Web-Medium.svg#Guardian Egyptian Web') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+}
+@font-face {
     font-family: 'EgyptianText';
     src: url('fonts/Guardian Text Egyp Web-Reg.woff') format('woff'),
          url('fonts/Guardian Text Egyp Web-Reg.ttf') format('truetype');
