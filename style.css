@@ -588,6 +588,8 @@ a,
   .new-navigation--collapsed .new-navigation__scroll {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch; }
+    .new-navigation--collapsed .new-navigation__scroll::-webkit-scrollbar {
+      display: none; }
   .new-navigation--collapsed,
   .new-navigation--collapsed .local-navigation,
   .new-navigation--collapsed .local-navigation__children {
