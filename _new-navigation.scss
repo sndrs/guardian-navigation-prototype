@@ -602,6 +602,10 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !default;
         text-decoration: none;
     }
 
+    .new-navigation--expanded & {
+        border-left: 0;
+    }
+
     @include mq(tablet) {
         @include rem((
             min-width: $new-navigation-toggler-width-full,

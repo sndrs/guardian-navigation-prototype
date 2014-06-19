@@ -862,6 +862,8 @@ a,
   .new-navigation__toggle, .new-navigation__toggle:hover, .new-navigation__toggle:focus, .new-navigation__toggle:active {
     color: white;
     text-decoration: none; }
+  .new-navigation--expanded .new-navigation__toggle {
+    border-left: 0; }
   @media all and (min-width: 46.25em) {
     .new-navigation__toggle {
       min-width: 130px;
