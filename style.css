@@ -453,6 +453,8 @@ a,
   height: 3.6rem;
   line-height: 36px;
   line-height: 3.6rem; }
+  .new-navigation a, .new-navigation a:hover, .new-navigation a:active, .new-navigation a:focus {
+    text-decoration: none; }
 
 .new-navigation__inner {
   position: relative; }
@@ -730,6 +732,9 @@ a,
     padding-left: 1rem;
     padding-right: 10px;
     padding-right: 1rem; }
+  .new-navigation--expanded .local-navigation__child:last-child {
+    padding-bottom: 12px;
+    padding-bottom: 1.2rem; }
   .new-navigation--expanded .local-navigation__child,
   .new-navigation--expanded .global-navigation__child {
     float: left;
