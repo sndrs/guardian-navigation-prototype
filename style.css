@@ -895,11 +895,11 @@ a,
 .new-navigation__signposting {
   font-family: "EgyptianHeadline", georgia, serif;
   font-weight: 900;
+  border-bottom: 1px solid #dfdfdf;
   padding-left: 10px;
   padding-left: 1rem;
   line-height: 36px;
-  line-height: 3.6rem;
-  border-bottom: 1px solid #dfdfdf; }
+  line-height: 3.6rem; }
   @media all and (min-width: 30em) {
     .new-navigation__signposting {
       padding-left: 20px;
@@ -910,7 +910,7 @@ a,
 
 .signposting__action,
 .signposting__separator {
-  margin-right: -8px;
-  margin-right: -0.8rem; }
+  margin-right: 8px;
+  margin-right: 0.8rem; }
 
 /*# sourceMappingURL=style.css.map */

@@ -652,6 +652,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 
 .new-navigation__signposting {
     @include f-header;
+    border-bottom: 1px solid guss-colour(neutral-5);
     @include rem((
         padding-left: $gs-gutter/2,
         line-height: gs-height(1)
@@ -661,7 +662,6 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
             padding-left: $gs-gutter
         ));
     }
-    border-bottom: 1px solid guss-colour(neutral-5);
 }
 .signposting__action {
     color: $c-new-navigation-signposting-action;
@@ -669,6 +669,6 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 .signposting__action,
 .signposting__separator {
     @include rem((
-        margin-right: -$new-navigation-h-space-between-items/2
+        margin-right: $new-navigation-h-space-between-items/2
     ));
 }
