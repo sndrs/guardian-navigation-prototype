@@ -414,6 +414,13 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
         float: none;
         display: block;
     }
+    .local-navigation__action {
+        @include rem((
+            font-size: 14px,
+        ));
+        line-height: 2;
+        font-weight: normal;
+    }
     .local-navigation__parent {
         @include mq(tablet) {
             @include rem((
@@ -659,7 +666,6 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
     .new-navigation--collapsed & {
         padding-left: 12px;
     }
-    
 }
 .new-navigation__toggle__icon {
     position: absolute;

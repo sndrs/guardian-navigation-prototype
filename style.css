@@ -695,6 +695,11 @@ a,
   .new-navigation--expanded .local-navigation__action {
     float: none;
     display: block; }
+  .new-navigation--expanded .local-navigation__action {
+    font-size: 14px;
+    font-size: 1.4rem;
+    line-height: 2;
+    font-weight: normal; }
   @media all and (min-width: 46.25em) {
     .new-navigation--expanded .local-navigation__parent {
       margin-right: -20px;
