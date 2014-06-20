@@ -518,7 +518,8 @@ a,
       margin-left: -2rem; } }
 
 .local-navigation__children {
-  background: #f1f1f1; }
+  background: #f1f1f1;
+  font-weight: normal; }
 
 .local-navigation__action {
   color: #333333;

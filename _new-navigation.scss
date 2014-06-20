@@ -177,6 +177,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 }
 .local-navigation__children {
     background: $c-local-navigation-background;
+    font-weight: normal;
 }
 .local-navigation__action {
     color: $c-local-navigation-action;
