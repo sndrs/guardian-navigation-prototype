@@ -25,7 +25,7 @@ $c-local-navigation-current-border: 2px solid guss-colour(tone-news-2) !default;
 
 $c-global-navigation-background: $c-navigation-background !default;
 $c-global-navigation-action: #ffffff !default;
-$c-global-navigation-border: guss-colour(neutral-5) !default;
+$c-global-navigation-border: rgba(#ffffff, .3) !default;
 
 $c-navigation-separator: 1px solid #ffffff !default;
 
@@ -112,6 +112,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 }
 .new-navigation__inner {
     position: relative;
+    background: $c-global-navigation-background;
 }
 .new-navigation__scroll {
     @include rem((
@@ -148,10 +149,12 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
     }
 }
 .local-navigation__parent,
-.local-navigation__action,
-.global-navigation__action,
-.global-navigation__title, {
+.local-navigation__action {
     color: $c-navigation-action;
+}
+.global-navigation__action,
+.global-navigation__title {
+    color: #ffffff;
 }
 .local-navigation__parent {
     position: relative;
@@ -211,7 +214,6 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
     display: table-cell;
 }
 .global-navigation {
-    background: #ffffff;
 }
 .local-navigation__child,
 .global-navigation__section {
@@ -368,7 +370,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
     z-index: 2;
 
     .new-navigation__inner {
-        background: #ffffff;
+
     }
     .local-navigation__children {
         clear: both;
@@ -630,6 +632,37 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 }
 .new-navigation--expanded .new-navigation__toggle-label--close {
     display: inline;
+}
+
+.honest-burger {
+    width: 8px;
+    height: 18px;
+    display: block;
+    overflow: hidden;
+    margin-top: 1px;
+}
+.honest-burger i {
+    border-top: 2px solid rgba(#ffffff, .9);
+    display: block;
+    margin-top: 3px;
+}
+
+.new-navigation__toggle--has-icon {
+    min-width: 42px;
+
+    .new-navigation--collapsed & {
+        padding-left: 12px;
+    }
+    
+}
+.new-navigation__toggle__icon {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    
+    .new-navigation--expanded & {
+        display: none;
+    }
 }
 
 

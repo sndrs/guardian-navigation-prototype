@@ -457,7 +457,8 @@ a,
     text-decoration: none; }
 
 .new-navigation__inner {
-  position: relative; }
+  position: relative;
+  background: #407dbc; }
 
 .new-navigation__scroll {
   padding-left: 10px;
@@ -490,10 +491,12 @@ a,
       margin-left: -2rem; } }
 
 .local-navigation__parent,
-.local-navigation__action,
+.local-navigation__action {
+  color: #333333; }
+
 .global-navigation__action,
 .global-navigation__title {
-  color: #333333; }
+  color: #ffffff; }
 
 .local-navigation__parent {
   position: relative;
@@ -545,9 +548,6 @@ a,
 .local-navigation__parent,
 .local-navigation__action {
   display: table-cell; }
-
-.global-navigation {
-  background: #ffffff; }
 
 .local-navigation__child,
 .global-navigation__section {
@@ -657,8 +657,6 @@ a,
    ========================================================================== */
 .new-navigation--expanded {
   z-index: 2; }
-  .new-navigation--expanded .new-navigation__inner {
-    background: #ffffff; }
   .new-navigation--expanded .local-navigation__children {
     clear: both; }
   .new-navigation--expanded .local-navigation {
@@ -769,7 +767,7 @@ a,
     margin-bottom: 2.4rem;
     overflow: hidden; }
   .new-navigation--expanded .global-navigation__title {
-    border-top: 1px solid #dfdfdf; }
+    border-top: 1px solid rgba(255, 255, 255, 0.3); }
   .new-navigation--expanded .global-navigation__title,
   .new-navigation--expanded .global-navigation__action,
   .new-navigation--expanded .global-navigation__children {
@@ -882,6 +880,30 @@ a,
 
 .new-navigation--expanded .new-navigation__toggle-label--close {
   display: inline; }
+
+.honest-burger {
+  width: 8px;
+  height: 18px;
+  display: block;
+  overflow: hidden;
+  margin-top: 1px; }
+
+.honest-burger i {
+  border-top: 2px solid rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-top: 3px; }
+
+.new-navigation__toggle--has-icon {
+  min-width: 42px; }
+  .new-navigation--collapsed .new-navigation__toggle--has-icon {
+    padding-left: 12px; }
+
+.new-navigation__toggle__icon {
+  position: absolute;
+  left: 0;
+  top: 8px; }
+  .new-navigation--expanded .new-navigation__toggle__icon {
+    display: none; }
 
 /* Variant A: no local navigation / with signposting
    ========================================================================== */
