@@ -672,3 +672,10 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
         margin-right: -$new-navigation-h-space-between-items/2
     ));
 }
+
+.global-navigation__children--collapsed {
+    display: none;
+}
+.global-navigation__children--expanded {
+    display: block;
+}
