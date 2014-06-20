@@ -9,7 +9,7 @@ $new-navigation-toggler-width: 36px !default;
 $new-navigation-toggler-width-full: 130px !default;
 
 $theme: default;
-// $theme: grey-and-dark-blue;
+$theme: grey-and-dark-blue;
 
 $c-navigation-background: #407dbc !default;
 $c-navigation-action: guss-colour(neutral-1) !default;
@@ -35,24 +35,24 @@ $c-navigation-toggle-shadow: rgba(#000000, .333333) !default;
 
 $new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !default;
 
-$c-new-navigation-signposting-action: guss-colour(neutral-1);
+$c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
 
 @if $theme == grey-and-dark-blue {
-    $c-navigation-background: mix(guss-colour(guardian-brand), #ffffff, 100%) !global;
+    $c-navigation-background: mix(guss-colour(guardian-brand), #407dbc, 0%) !global;
     $c-navigation-action: guss-colour(neutral-1) !global;
 
     $c-local-navigation-background: guss-colour(neutral-7) !global;
     $c-local-navigation-action: guss-colour(neutral-1) !global;
 
-    $c-local-navigation-parent-background: $c-navigation-background !global;
+    $c-local-navigation-parent-background: mix(guss-colour(guardian-brand), #407dbc, 50%) !global;
 
     $c-local-navigation-current-background: $c-local-navigation-parent-background !global;
     $c-local-navigation-current: #ffffff !global;
-    $c-local-navigation-current-border: 0;
+    $c-local-navigation-current-border: 0 !global;
 
     $c-global-navigation-background: #407dbc !global;
     $c-global-navigation-action: guss-colour(neutral-2) !global;
-    $c-global-navigation-border: guss-colour(neutral-5) !global;
+    $c-global-navigation-border: rgba(#ffffff, .3) !global;
 
     $c-navigation-separator: 0 !global;
 
@@ -418,8 +418,8 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
     .local-navigation__action {
         @include rem((
             font-size: 14px,
+            line-height: 28px
         ));
-        line-height: 2;
         font-weight: normal;
     }
     .local-navigation__parent {
@@ -450,7 +450,8 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
         clear: both;
         @include clearfix;
         @include rem((
-            padding-top: $gs-baseline
+            padding-top: $gs-baseline,
+            line-height: 28px
         ));
     }
     .local-navigation__children {
@@ -498,12 +499,16 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
         float: none;
         margin-right: 0;
         @include rem((
-            margin-bottom: $gs-baseline*2
+            margin-bottom: $gs-baseline*.75
         ));
         overflow: hidden;
     }
     .global-navigation__title {
         border-top: 1px solid $c-global-navigation-border;
+        @include rem((
+            line-height: 24px,
+            padding-bottom: 3px
+        ));
     }
     .global-navigation__title,
     .global-navigation__action,
@@ -585,6 +590,18 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 }
 
 
+/* Home button
+   ========================================================================== */
+.i-home {
+    display: inline-block;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAgCAYAAAAIXrg4AAAAi0lEQVR42u2WwQ2AMAgAGcERHKEjOAojOFI3whEcwQ1QanwYHmgKxgeX8OSuH5LCU5gZ+WQ7poAjIp/4znrM4CUv7dWaRSK98lHJvSKy2AQ2tVvuHpEFfk/1l2vQks/cDxqH5ALqQ/KlXbs6pJCIkjtHgIPJQAY+CIBBBjKQgZ8EKDBA1y+OAgIk7h02tXtYwgpPngAAAABJRU5ErkJggg==
+') no-repeat 0 0;
+    @include background-size(cover);
+    @include rem((
+        width: 12px,
+        height: 16px
+    ));
+}
 /* Toggle button
    ========================================================================== */
 
@@ -648,6 +665,10 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
     display: block;
     overflow: hidden;
     margin-top: 1px;
+
+    .new-navigation--expanded & {
+        display: none;
+    }
 }
 .honest-burger i {
     border-top: 2px solid rgba(#ffffff, .9);
@@ -668,13 +689,44 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
         padding-left: 12px;
     }
 }
-.new-navigation__toggle__icon {
+.new-navigation__toggle-burger {
     position: absolute;
     left: 0;
-    top: 8px;
-    
+    @include rem((
+        top: 8px
+    ));
+}
+.new-navigation__toggle-arrow {
+    position: absolute;
+    @include rem((
+        left: 7px,
+        top: 16px
+    ));
+    @include mq(tablet) {
+        @include rem((
+            left: 12px
+        ));
+    }
+}
+.arrow-box {
+    position: relative;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    @include rem((
+        border-width: 4px,
+        margin-left: -4px
+    ));
+
     .new-navigation--expanded & {
-        display: none;
+        @include rotate(180deg);
+        @include rem((
+            top: 11px
+        ));
     }
 }
 
