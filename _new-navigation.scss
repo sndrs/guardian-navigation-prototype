@@ -650,6 +650,12 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1);
 .new-navigation__toggle--has-icon {
     min-width: 42px;
 
+    @include mq(tablet) {
+        @include rem((
+            min-width: $new-navigation-toggler-width-full
+        ));
+    }
+
     .new-navigation--collapsed & {
         padding-left: 12px;
     }
