@@ -883,28 +883,34 @@ a,
 .new-navigation--expanded .new-navigation__toggle-label--close {
   display: inline; }
 
-/* Variant: no local navigation / with signposting
+/* Variant A: no local navigation / with signposting
    ========================================================================== */
 .new-navigation--hide-local-navigation.new-navigation--collapsed .local-navigation {
   display: none; }
 .new-navigation--hide-local-navigation.new-navigation--collapsed .global-navigation {
   border-left: 0;
-  margin-left: -16px; }
+  margin-left: -16px;
+  margin-left: -1.6rem; }
 
 .new-navigation__signposting {
-  font-weight: 900;
   font-family: "EgyptianHeadline", georgia, serif;
   font-weight: 900;
-  line-height: 36px;
   padding-left: 10px;
+  padding-left: 1rem;
+  line-height: 36px;
+  line-height: 3.6rem;
   border-bottom: 1px solid #dfdfdf; }
   @media all and (min-width: 30em) {
     .new-navigation__signposting {
-      padding-left: 20px; } }
-  .new-navigation__signposting a {
-    color: #333;
-    margin-right: 8px; }
-  .new-navigation__signposting span {
-    margin-right: 8px; }
+      padding-left: 20px;
+      padding-left: 2rem; } }
+
+.signposting__action {
+  color: #333333; }
+
+.signposting__action,
+.signposting__separator {
+  margin-right: -8px;
+  margin-right: -0.8rem; }
 
 /*# sourceMappingURL=style.css.map */

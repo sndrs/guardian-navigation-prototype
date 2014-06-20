@@ -35,6 +35,8 @@ $c-navigation-toggle-shadow: rgba(#000000, .333333) !default;
 
 $new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !default;
 
+$c-new-navigation-signposting-action: guss-colour(neutral-1);
+
 @if $theme == grey-and-dark-blue {
     $c-navigation-background: mix(guss-colour(guardian-brand), #ffffff, 100%) !global;
     $c-navigation-action: guss-colour(neutral-1) !global;
@@ -631,7 +633,7 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !default;
 }
 
 
-/* Variant: no local navigation / with signposting
+/* Variant A: no local navigation / with signposting
    ========================================================================== */
 
 .new-navigation--hide-local-navigation {
@@ -641,27 +643,32 @@ $new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !default;
         }
         .global-navigation {
             border-left: 0;
-            margin-left: -16px;
+            @include rem((
+                margin-left: -$new-navigation-h-space-between-items
+            ));
         }
     }
 }
 
 .new-navigation__signposting {
-    font-weight: 900;
     @include f-header;
-    line-height: 36px;
-    padding-left: 10px;
+    @include rem((
+        padding-left: $gs-gutter/2,
+        line-height: gs-height(1)
+    ));
     @include mq(mobileLandscape) {
-
-        padding-left: 20px;
+        @include rem((
+            padding-left: $gs-gutter
+        ));
     }
     border-bottom: 1px solid guss-colour(neutral-5);
-
-    a {
-        color: #333;
-        margin-right: 8px;
-    }
-    span {
-        margin-right: 8px;
-    }
+}
+.signposting__action {
+    color: $c-new-navigation-signposting-action;
+}
+.signposting__action,
+.signposting__separator {
+    @include rem((
+        margin-right: -$new-navigation-h-space-between-items/2
+    ));
 }
