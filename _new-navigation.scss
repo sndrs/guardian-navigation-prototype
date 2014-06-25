@@ -383,39 +383,41 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
     }
 
     @include mq(wide) {
-        @include rem((
-            height: (gs-height(1)*2)
-        ));
+        &.new-navigation--two-levels-at-wide-breakpoint {
+            @include rem((
+                height: (gs-height(1)*2)
+            ));
 
-        &:after {
-            content: '';
-            position: absolute;
-            @include rem((
-                top: gs-height(1)
-            ));
-            display: block;
-            width: 100%;
-            border-top: 1px solid rgba(255, 255, 255, .5);
-        }
+            &:after {
+                content: '';
+                position: absolute;
+                @include rem((
+                    top: gs-height(1)
+                ));
+                display: block;
+                width: 100%;
+                border-top: 1px solid rgba(255, 255, 255, .5);
+            }
 
-        .new-navigation__container {
-            display: block;
-        }
-        .local-navigation {
-            @include rem((
-                width: gs-span(16) + $gs-gutter*2,
-                margin-top: gs-height(1)
-            ));
-        }
-        .local-navigation__children {
-            width: 100%;
-        }
-        .global-navigation {
-            position: relative;
-            @include rem((
-                top: -(gs-height(1)*2),
-                margin-left: -$new-navigation-h-space-between-items
-            ));
+            .new-navigation__container {
+                display: block;
+            }
+            .local-navigation {
+                @include rem((
+                    width: gs-span(16) + $gs-gutter*2,
+                    margin-top: gs-height(1)
+                ));
+            }
+            .local-navigation__children {
+                width: 100%;
+            }
+            .global-navigation {
+                position: relative;
+                @include rem((
+                    top: -(gs-height(1)*2),
+                    margin-left: -$new-navigation-h-space-between-items
+                ));
+            }
         }
     }
 }

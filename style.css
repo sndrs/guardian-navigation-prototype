@@ -665,10 +665,10 @@ a,
     padding-left: 20px;
     padding-left: 2rem; }
   @media all and (min-width: 81.25em) {
-    .new-navigation--collapsed {
+    .new-navigation--collapsed.new-navigation--two-levels-at-wide-breakpoint {
       height: 72px;
       height: 7.2rem; }
-      .new-navigation--collapsed:after {
+      .new-navigation--collapsed.new-navigation--two-levels-at-wide-breakpoint:after {
         content: '';
         position: absolute;
         top: 36px;
@@ -676,16 +676,16 @@ a,
         display: block;
         width: 100%;
         border-top: 1px solid rgba(255, 255, 255, 0.5); }
-      .new-navigation--collapsed .new-navigation__container {
+      .new-navigation--collapsed.new-navigation--two-levels-at-wide-breakpoint .new-navigation__container {
         display: block; }
-      .new-navigation--collapsed .local-navigation {
+      .new-navigation--collapsed.new-navigation--two-levels-at-wide-breakpoint .local-navigation {
         width: 1300px;
         width: 130rem;
         margin-top: 36px;
         margin-top: 3.6rem; }
-      .new-navigation--collapsed .local-navigation__children {
+      .new-navigation--collapsed.new-navigation--two-levels-at-wide-breakpoint .local-navigation__children {
         width: 100%; }
-      .new-navigation--collapsed .global-navigation {
+      .new-navigation--collapsed.new-navigation--two-levels-at-wide-breakpoint .global-navigation {
         position: relative;
         top: -72px;
         top: -7.2rem;
