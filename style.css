@@ -664,6 +664,33 @@ a,
   .new-navigation--collapsed.new-navigation--has-no-local-navigation .global-navigation__section:first-child {
     padding-left: 20px;
     padding-left: 2rem; }
+  @media all and (min-width: 81.25em) {
+    .new-navigation--collapsed {
+      height: 72px;
+      height: 7.2rem; }
+      .new-navigation--collapsed:after {
+        content: '';
+        position: absolute;
+        top: 36px;
+        top: 3.6rem;
+        display: block;
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.5); }
+      .new-navigation--collapsed .new-navigation__container {
+        display: block; }
+      .new-navigation--collapsed .local-navigation {
+        width: 1300px;
+        width: 130rem;
+        margin-top: 36px;
+        margin-top: 3.6rem; }
+      .new-navigation--collapsed .local-navigation__children {
+        width: 100%; }
+      .new-navigation--collapsed .global-navigation {
+        position: relative;
+        top: -72px;
+        top: -7.2rem;
+        margin-left: -16px;
+        margin-left: -1.6rem; } }
 
 /* State: expanded
    ========================================================================== */
@@ -1133,7 +1160,7 @@ a,
   padding-left: 2rem;
   padding-bottom: 8px;
   padding-bottom: 0.8rem;
-  font-weight: 300;
+  font-weight: bold;
   color: rgba(255, 255, 255, 0.5); }
   @media all and (min-width: 46.25em) {
     .global-navigation__toggle-children {
