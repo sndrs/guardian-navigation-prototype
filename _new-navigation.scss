@@ -300,6 +300,12 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
         @include rem((
             padding-right: $new-navigation-toggler-width + $gs-gutter
         ));
+
+        @include mq(tablet) {
+            @include rem((
+                padding-right: $new-navigation-toggler-width-full + $gs-gutter
+            ));
+        }
     }
 }
 
@@ -343,7 +349,9 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
                 ));
             }
         }
-
+        @include mq(tablet) {
+            float: left;
+        }
     }
     .global-navigation {
         background: $c-global-navigation-background;
@@ -505,15 +513,12 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
         .top-navigation__item--home {
             display: none !important;
         }
-        .top-navigation__item--home + .top-navigation__item {
-            @include rem((
-                padding-left: $gs-gutter
-            ));
-        }
+        
 
         // Re-align signposting and local nav
         .signposting,
         .local-navigation {
+            vertical-align: top;
             display: table-cell;
             @include rem((
                 height: $gs-row-height

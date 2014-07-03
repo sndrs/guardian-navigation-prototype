@@ -625,6 +625,10 @@ a,
 .new-navigation--collapsed .top-navigation__item:last-child {
   padding-right: 68px;
   padding-right: 6.8rem; }
+  @media all and (min-width: 46.25em) {
+    .new-navigation--collapsed .top-navigation__item:last-child {
+      padding-right: 150px;
+      padding-right: 15rem; } }
 
 /* State: expanded
    ========================================================================== */
@@ -653,6 +657,9 @@ a,
       .new-navigation--expanded .local-navigation__item:last-child {
         padding-bottom: 12px;
         padding-bottom: 1.2rem; } }
+  @media all and (min-width: 46.25em) {
+    .new-navigation--expanded .local-navigation__item {
+      float: left; } }
   .new-navigation--expanded .global-navigation {
     background: #2479c3;
     clear: both; }
@@ -799,11 +806,9 @@ a,
     display: table-cell !important; }
   .new-navigation--has-local-navigation .top-navigation__item--home {
     display: none !important; }
-  .new-navigation--has-local-navigation .top-navigation__item--home + .top-navigation__item {
-    padding-left: 20px;
-    padding-left: 2rem; }
   .new-navigation--has-local-navigation .signposting,
   .new-navigation--has-local-navigation .local-navigation {
+    vertical-align: top;
     display: table-cell;
     height: 36px;
     height: 3.6rem; }
