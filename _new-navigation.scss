@@ -5,64 +5,40 @@
 /* Configuration
    ========================================================================== */
 
-$new-navigation-toggler-width: 36px !default;
+$new-navigation-toggler-width: 48px !default;
 $new-navigation-toggler-width-full: 130px !default;
 
 $theme: default;
-$theme: grey-and-dark-blue;
 
-$c-navigation-background: #407dbc !default;
-$c-navigation-action: guss-colour(neutral-1) !default;
+$c-navigation-background: #5094CF !global;
+$c-navigation-action: guss-colour(neutral-1) !global;
 
-$c-local-navigation-background: guss-colour(neutral-7) !default;
-$c-local-navigation-action: guss-colour(neutral-1) !default;
+$c-signposting-action: guss-colour(guardian-brand) !global;
+$c-signposting-background: #DDF7FF !global;
 
-$c-local-navigation-parent-background: #ffffff !default;
+$c-top-navigation-action: #ffffff !global;
+$c-top-navigation-background: guss-colour(guardian-brand) !global;
 
-$c-local-navigation-current-background: $c-local-navigation-parent-background !default;
-$c-local-navigation-current: guss-colour(neutral-1) !default;
-$c-local-navigation-current-border: 2px solid guss-colour(tone-news-2) !default;
+$c-local-navigation-background: #2479C3 !global;
+$c-local-navigation-action: #ffffff !global;
 
-$c-global-navigation-background: $c-navigation-background !default;
-$c-global-navigation-action: #ffffff !default;
-$c-global-navigation-border: rgba(#ffffff, .3) !default;
+$c-local-navigation-parent-background: guss-colour(guardian-brand) !global;
 
-$c-navigation-separator: 1px solid #ffffff !default;
+$c-local-navigation-current-background: $c-local-navigation-parent-background !global;
+$c-local-navigation-current: #ffffff !global;
+$c-local-navigation-current-border: 0 !global;
 
-$c-navigation-toggle-background: guss-colour(guardian-brand) !default;
-$c-navigation-toggle-icon: #ffffff !default;
-$c-navigation-toggle-shadow: rgba(#000000, .333333) !default;
+$c-global-navigation-background: #2479C3 !global;
+$c-global-navigation-title: #ffffff !global;
+$c-global-navigation-title-background: guss-colour(guardian-brand) !global;
+$c-global-navigation-action: #ffffff !global;
+$c-global-navigation-border: rgba(#ffffff, .3) !global;
 
-$new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !default;
+$c-navigation-toggle-background: #2479C3 !global;
+$c-navigation-toggle-icon: #ffffff !global;
+$c-navigation-toggle-shadow: rgba(#000000, .333333) !global;
 
-$c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
-
-@if $theme == grey-and-dark-blue {
-    $c-navigation-background: mix(guss-colour(guardian-brand), #407dbc, 0%) !global;
-    $c-navigation-action: guss-colour(neutral-1) !global;
-
-    $c-local-navigation-background: rgba(#ffffff, .15) !global;
-    $c-local-navigation-action: #ffffff !global;
-
-    $c-local-navigation-parent-background: mix(guss-colour(guardian-brand), #407dbc, 75%) !global;
-
-    $c-local-navigation-current-background: $c-local-navigation-parent-background !global;
-    $c-local-navigation-current: #ffffff !global;
-    $c-local-navigation-current-border: 0 !global;
-
-    $c-global-navigation-background: #407dbc !global;
-    $c-global-navigation-action: guss-colour(neutral-2) !global;
-    $c-global-navigation-border: rgba(#ffffff, .4) !global;
-
-    $c-navigation-separator: 0 !global;
-
-    $c-navigation-toggle-background: guss-colour(guardian-brand) !global;
-    $c-navigation-toggle-icon: #ffffff !global;
-    $c-navigation-toggle-shadow: rgba(#000000, .333333) !global;
-
-    $new-navigation-h-space-between-items: get-font-size($fs-headers, 1) !global;
-}
-
+$new-navigation-h-space-between-items: $gs-gutter !global;
 
 
 /* Overrides (to be incorporated into the global CSS when killing the old nav)
@@ -91,16 +67,16 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
 .new-navigation {
     position: relative;
     z-index: 1;
+    overflow: hidden;
     clear: both;
     background: $c-navigation-background;
     @include fs-header(1);
-    @if $theme == default {
-        font-weight: bold;
-    }
     @include rem((
-        height: gs-height(1),
-        line-height: gs-height(1)
+        height: $gs-row-height,
+        line-height: $gs-row-height
     ));
+    font-weight: bold;
+
     a {
         &,
         &:hover,
@@ -110,27 +86,15 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
         }
     }
 }
-.new-navigation__inner {
+.top-navigation,
+.new-navigation__main {
     position: relative;
-    background: $c-global-navigation-background;
-}
-.new-navigation__scroll {
-    @include rem((
-        padding-left: $gs-gutter/2,
-        padding-right: $gs-gutter/2
-    ));
-
-    @include mq(mobileLandscape) {
-        @include rem((
-            padding-left: $gs-gutter,
-            padding-right: $gs-gutter
-        ));
-    }
+    background: $c-top-navigation-background;
 }
 
-
+.signposting,
 .local-navigation,
-.local-navigation__children,
+.top-navigation,
 .global-navigation,
 .global-navigation__children {
     list-style-type: none;
@@ -138,156 +102,155 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
     padding: 0;
 }
 .local-navigation {
-    @include rem((
-        min-height: gs-height(1),
-        margin-left: -$gs-gutter/2
-    ));
-    @include mq(mobileLandscape) {
-        @include rem((
-            margin-left: -$gs-gutter
-        ));
-    }
-}
-.local-navigation__parent,
-.local-navigation__action {
-    color: $c-navigation-action;
-}
-.global-navigation__action,
-.global-navigation__title {
-    color: #ffffff;
-}
-.local-navigation__parent {
-    position: relative;
-    display: table-cell;
-    color: $c-local-navigation-current;
-    text-decoration: none;
-    background: $c-local-navigation-parent-background;
-    @include rem((
-        padding-right: $gs-gutter/2,
-        padding-left: $gs-gutter/2,
-        margin-left: -$gs-gutter/2
-    ));
-
-    @include mq(mobileLandscape) {
-        .new-navigation--collapsed &:first-child,
-        .new-navigation--expanded & {
-            @include rem((
-                padding-left: $gs-gutter,
-                margin-left: -$gs-gutter
-            ));
-        }
-    }
-}
-.local-navigation__children {
     background: $c-local-navigation-background;
-    font-weight: normal;
 }
-.local-navigation__action {
-    color: $c-local-navigation-action;
-    text-decoration: none;
-
-    .local-navigation__child--current & {
-        background: $c-local-navigation-current-background;
-        color: $c-local-navigation-current;
-        @include rem((
-            padding-right: $new-navigation-h-space-between-items
-        ));
-    }
-}
-
-.local-navigation__separator {
-    display: table-cell;
-    background: $c-local-navigation-current-background;
-    font-weight: normal;
-    color: #ffffff;
-    @include rem((
-        font-size: 26px
-    ));
-    line-height: 1;
-}
-.local-navigation__child .local-navigation__separator__inner {
-    @include rem((
-        margin-right: $gs-gutter/2
-    ));
-}
-.local-navigation__separator__inner {
-    position: relative;
-    @include rem((
-        bottom: -2px
-    ));
-}
-
-
-.local-navigation__parent,
 .local-navigation__action,
-.global-navigation__title,
-.global-navigation__action {
-    text-overflow: ellipsis;
-    overflow: hidden;
+.top-navigation__action {
+    color: $c-local-navigation-action;
 }
-.local-navigation__parent,
-.local-navigation__action {
+.top-navigation__action {
+    color: $c-top-navigation-action;
     display: table-cell;
 }
-.global-navigation {
+.global-navigation__title {
+    color: $c-global-navigation-title;
+    background: $c-global-navigation-title-background;
 }
-.local-navigation__child,
-.global-navigation__section {
+.global-navigation__action {
+    color: $c-global-navigation-action;
+    display: block;
+}
+.signposting__item {
+    display: table-cell;
+    background: $c-signposting-background;
+}
+.signposting__item {
     white-space: nowrap;
     display: table-cell;
     position: relative;
+
+    @include rem((
+        padding-left: $new-navigation-h-space-between-items/2
+    ));
 }
-.global-navigation__section--current {
+.signposting__item:last-child {
+    @include rem((
+        padding-right: $new-navigation-h-space-between-items/2
+    ));
+}
+.signposting__action {
+    color: $c-signposting-action;
+    text-decoration: none;
+    display: table-cell;
+}
+.signposting__item--home {
+}
+
+.signposting__separator {
+    display: table-cell;
+    vertical-align: top;
+}
+.signposting__separator__inner {
+    $_dim-arrow-w: $gs-gutter/2;
+    $_dim-arrow-h: 20px;
+    $_dim-arrow-my: $_dim-arrow-h * -1;
+
+    position: relative;
+    background: $c-signposting-background;
+    display: block;
+    overflow: hidden;
+    @include rem((
+        width: $gs-gutter/2,
+        height: $gs-row-height,
+        margin-right: $gs-gutter/2
+    ));
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        top: 50%;
+        left: -1px;
+        position: absolute;
+        width: 0;
+        height: 0;
+        @include rem((
+            margin-top: $_dim-arrow-my,
+            border-top: $_dim-arrow-h solid transparent,
+            border-bottom: $_dim-arrow-h solid transparent,
+            border-left: $_dim-arrow-w solid #2479C3
+        ));
+    }
+    &:before {
+        margin-left: 1px;
+        z-index: 1;
+    }
+    &:after {
+        border-left-color: $c-signposting-background;
+        z-index: 2;
+    }
+}
+
+
+.local-navigation__action,
+.top-navigation__action,
+.global-navigation__action {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.top-navigation__item--current {
     @include rem((
         margin-right: $gs-gutter/2
     ));
 }
+
 .global-navigation__title {
     float: left;
 }
 .global-navigation__children {
-    display: none;
-    @include rem((
-        font-size: 14px,
-    ));
-    line-height: 2;
-    font-weight: normal;
+    overflow: hidden;
+    @include mq($to: tablet) {
+        @include rem((
+            font-size: 14px,
+        ));
+        line-height: 2;
+    }
+    background: $c-local-navigation-background;
 }
-.global-navigation__action {
-    float: left;
-}
-.new-navigation__top-hat {
-    display: block;
+.local-navigation__item,
+.top-navigation__item {
+    white-space: nowrap;
+    display: table-cell;
     position: relative;
-    width: 100%;
-    height: 0;
 
-    &:after {
-        content: '';
-        position: absolute;
-        display: block;
-        top: 0;
-        right: 0;
-        left: 0;
-        border-top: $c-local-navigation-current-border;
+    @include rem((
+        padding-right: $new-navigation-h-space-between-items/2,
+        padding-left: $new-navigation-h-space-between-items/2
+    ));
+}
+.signposting__item--home,
+.top-navigation__item--home {
+    @include rem((
+        padding-left: $gs-gutter/2
+    ));
 
-        .local-navigation__parent & {
-            @include rem((
-                left: -$gs-gutter,
-                right: -$new-navigation-h-space-between-items
-            ))
-        }
-        .new-navigation--expanded .local-navigation__child & {
-            display: none;
-        }
+    @include mq(mobileLandscape) {
+        @include rem((
+            padding-left: $gs-gutter
+        ));
     }
 }
+
 
 /* State: collapsed
    ========================================================================== */
 
 .new-navigation--collapsed {
-    overflow: hidden;
+    &.new-navigation--has-local-navigation .top-navigation__item--home {
+        display: none;
+    }
 
     .new-navigation--collapsed__hide {
         display: none !important;
@@ -305,120 +268,38 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
             display: none;
         }
     }
+    
+    .global-navigation {
+        display: none;
+    }
 
     &,
-    .local-navigation,
-    .local-navigation__children {
+    .signposting,
+    .local-navigation {
         @include rem((
-            height: gs-height(1)
+            height: $gs-row-height
         ));
     }
-    .local-navigation__children {
-        overflow: hidden;
+    .signposting,
+    .local-navigation {
         display: table-cell;
     }
-    .local-navigation__child,
-    .global-navigation__section {
+
+    &.new-navigation--has-local-navigation .top-navigation {
+        @include rem((
+            padding-left: $new-navigation-h-space-between-items/2
+        ));
+    }
+    .local-navigation__item,
+    .top-navigation__item {
         white-space: nowrap;
         display: table-cell;
-        @include rem((
-            padding-right: $new-navigation-h-space-between-items
-        ));
-    }
-    .local-navigation__child:first-child,
-    .global-navigation__section:first-child,
-    .global-navigation__section.new-navigation--collapsed__hide:first-child + .global-navigation__section {
-        @include rem((
-            padding-left: $new-navigation-h-space-between-items
-        ));
-    }
-    .local-navigation__child--current {
-        &:first-child {
-            padding-left: 0;
-        }
-        &:last-child {
-            padding-right: 0;
-        }
-    }
-    .global-navigation {
-        overflow: hidden;
         position: relative;
-        background: $c-global-navigation-background;
-        border-left: $c-navigation-separator;
-
-        @include mq(desktop) {
-            @include rem((
-                border-right: $gs-gutter solid $c-navigation-background
-            ));
-        }
     }
-    .global-navigation__title,
-    .global-navigation__action {
-        color: #ffffff;
-    }
-    .global-navigation__section:last-child {
+    .top-navigation__item:last-child {
         @include rem((
             padding-right: $new-navigation-toggler-width + $gs-gutter
         ));
-
-        @include mq(tablet) {
-            @include rem((
-                padding-right: $new-navigation-toggler-width-full + $gs-gutter
-            ));
-        }
-    }
-
-    &.new-navigation--has-no-local-navigation {
-        .global-navigation {
-            border-left: 0;
-            @include rem((
-                margin-left: -$gs-gutter
-            ));
-        }
-        .global-navigation__section:first-child {
-            @include rem((
-                padding-left: $gs-gutter
-            ));
-        }
-    }
-
-    @include mq(wide) {
-        &.new-navigation--two-levels-at-wide-breakpoint {
-            @include rem((
-                height: (gs-height(1)*2)
-            ));
-
-            &:after {
-                content: '';
-                position: absolute;
-                @include rem((
-                    top: gs-height(1)
-                ));
-                display: block;
-                width: 100%;
-                border-top: 1px solid rgba(255, 255, 255, .5);
-            }
-
-            .new-navigation__container {
-                display: block;
-            }
-            .local-navigation {
-                @include rem((
-                    width: gs-span(16) + $gs-gutter*2,
-                    margin-top: gs-height(1)
-                ));
-            }
-            .local-navigation__children {
-                width: 100%;
-            }
-            .global-navigation {
-                position: relative;
-                @include rem((
-                    top: -(gs-height(1)*2),
-                    margin-left: -$new-navigation-h-space-between-items
-                ));
-            }
-        }
     }
 }
 
@@ -430,146 +311,77 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
     z-index: 2;
     height: auto;
 
-    .new-navigation__inner {
-
+    // Show only the home section
+    .top-navigation__item {
+        display: none;
     }
-    .local-navigation__children {
-        clear: both;
+    &.new-navigation--has-no-local-navigation .top-navigation__item--home {
+        display: block;
     }
     .local-navigation {
         overflow: hidden;
-        @include rem((
-            margin-right: -$gs-gutter/2,
-            margin-left: -$gs-gutter/2,
-            padding-left: $gs-gutter/2,
-            padding-right: $gs-gutter/2
-        ));
         background: $c-local-navigation-background;
 
-        // Prevent 1px from bleeding on the right side of the page
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            @include rem((
-                height: gs-height(1)
-            ));
-            background: $c-navigation-background;
-        }
 
         @include mq(mobileLandscape) {
             @include rem((
-                margin-right: -$gs-gutter,
-                margin-left: -$gs-gutter,
-                padding-left: $gs-gutter,
-                padding-right: $gs-gutter
+                padding-left: $gs-gutter/2,
+                padding-right: $gs-gutter/2
             ));
         }
     }
-    .local-navigation,
-    .local-navigation__parent,
-    .local-navigation__action {
-        float: none;
-        display: block;
-    }
-    .local-navigation__action {
-        @include rem((
-            font-size: 14px,
-            line-height: 28px
-        ));
-        font-weight: normal;
-    }
-    .local-navigation__parent {
-        @include mq(tablet) {
+    .local-navigation__item {
+        @include mq($to: tablet) {
             @include rem((
-                margin-right: -$gs-gutter
+                font-size: 14px,
+                line-height: 28px
             ));
-        }
-    }
-    .local-navigation__child--current .local-navigation__action {
-        @include rem((
-            padding-left: $gs-gutter/2,
-            margin-left: -$gs-gutter/2
-        ));
-
-        @include mq(mobileLandscape) {
-            @include rem((
-                padding-left: $gs-gutter,
-                margin-left: -$gs-gutter
-            ));
-        }
-    }
-    .local-navigation__parent--home,
-    .local-navigation__separator {
-        display: none;
-    }
-    .global-navigation {
-        clear: both;
-        @include clearfix;
-        @include rem((
-            line-height: 28px
-        ));
-        @include mq(mobileLandscape) {
-            @include rem((
-                margin-left: -$gs-gutter,
-                margin-right: -$gs-gutter,
-                padding-left: $gs-gutter,
-                padding-right: $gs-gutter
-            ));
-        }
-        @include mq(tablet) {
-            @include rem((
-                margin-top: $gs-baseline,
-                margin-left: -$gs-gutter*1.5,
-                margin-right: -$gs-gutter*1.5
-            ));
-        }
-    }
-    .local-navigation__children {
-        @include rem((
-            margin-left: -$gs-gutter,
-            margin-right: -$gs-gutter,
-            padding-left: $gs-gutter/2,
-            padding-right: $gs-gutter/2
-        ));
-        @include mq(tablet) {
-            padding-left: 0;
-            padding-right: 0;
-
-            @include mq(mobileLandscape) {
+            &:last-child {
+                // Add space below the local nav (only if there is one)
                 @include rem((
-                    margin-right: -$gs-gutter/2,
-                    margin-left: -$gs-gutter/2
+                    padding-bottom: $gs-baseline
                 ));
             }
         }
-    }
-    .local-navigation__child:last-child {
-        // Add space below the local nav (only if there is one)
-        @include rem((
-            padding-bottom: $gs-baseline
-        ));
-    }
-    .local-navigation__child,
-    .global-navigation__child {
-        float: left;
-        width: 50%;
-        padding-right: 0;
-        @include box-sizing(border-box);
-        @include rem((
-            padding-left: $gs-gutter/2,
-            padding-right: $gs-gutter/2
-        ));
 
-        &:nth-child(2n+1) {
-            clear: both;
+    }
+    .global-navigation {
+        background: $c-global-navigation-background;
+        clear: both;
+        @include clearfix;
+
+        @include mq($to: tablet) {
+            @include rem((
+                line-height: 28px
+            ));
         }
+        @include mq(mobileLandscape, tablet) {
+            @include rem((
+                padding-left: $gs-gutter,
+                padding-right: $gs-gutter
+            ));
+        }
+    }
 
-        @include mq(mobileLandscape) {
+    .local-navigation__item,
+    .global-navigation__child {
+        @include mq($to: tablet) {
+            float: left;
+            width: 50%;
+            padding-right: 0;
+            @include box-sizing(border-box);
+            @include rem((
+                padding-left: $gs-gutter/2,
+                padding-right: $gs-gutter/2
+            ));
+
+            &:nth-child(2n+1) {
+                clear: both;
+            }
+        }
+        @include mq(mobileLandscape, tablet) {
             width: 33.3333333333%;
+
             &:nth-child(n) {
                 clear: none;
             }
@@ -578,154 +390,174 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
             }
         }
     }
+
     .global-navigation__section {
         display: block;
         clear: both;
-        float: none;
         margin-right: 0;
         overflow: hidden;
-        @include rem((
-            margin-left: -$gs-gutter/2,
-            margin-right: -$gs-gutter/2
-        ));
+        border-top: 1px solid $c-global-navigation-border;
 
-        @include mq(mobileLandscape) {
+        @include mq(mobileLandscape, tablet) {
             @include rem((
                 margin-right: -$gs-gutter,
                 margin-left: -$gs-gutter
             ));
         }
-        @include mq(tablet) {
-            margin-left: 0;
-            margin-right: 0;
-        }
     }
     .global-navigation__title {
-        border-top: 1px solid $c-global-navigation-border;
-        @include rem((
-            line-height: $gs-baseline*2,
-            padding-bottom: $gs-baseline,
-            padding-left: $gs-gutter/2,
-            padding-right: $gs-gutter/2
-        ));
-        @include mq(mobileLandscape) {
+        @include mq($to: tablet) {
             @include rem((
-                padding-left: $gs-gutter,
-                padding-right: $gs-gutter
-            ));
-        }
-        @include mq(tablet) {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
-    .global-navigation__title,
-    .global-navigation__action,
-    .global-navigation__children {
-        float: none;
-        display: block;
-    }
-    .global-navigation__children {
-        overflow: hidden;
-        background: $c-local-navigation-background;
-        @include rem((
-            margin-left: -$gs-gutter/2,
-            margin-right: -$gs-gutter/2,
-            padding-left: $gs-gutter/2,
-            padding-right: $gs-gutter/2,
-            padding-bottom: $gs-baseline*.75
-        ));
-        @include mq(mobileLandscape) {
-            @include rem((
-                padding-left: $gs-gutter,
-                padding-right: $gs-gutter
-            ));
-        }
-        @include mq(tablet) {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: 0;
-            margin-right: 0;
-        }
-    }
-
-    @include mq(tablet) {
-        .global-navigation__children {
-            margin-left: 0;
-            margin-right: 0;
-            box-shadow: $gs-gutter/4 0 0 $c-local-navigation-background, -$gs-gutter/4 0 0  $c-local-navigation-background;
-            @include rem((
-                margin-bottom: $gs-baseline
-            ));
-        }
-        .global-navigation__section {
-            @include box-sizing(border-box);
-            float: left;
-            @include rem((
+                line-height: $gs-baseline*2,
+                padding-bottom: $gs-baseline,
                 padding-left: $gs-gutter/2,
                 padding-right: $gs-gutter/2
             ));
         }
-        .local-navigation__child,
-        .global-navigation__section {
-            width: 25%;
-
-            &:nth-child(n) {
-                clear: none;
-            }
-            &:nth-child(4n+1) {
-                clear: both;
-            }
+        @include mq(mobileLandscape, tablet) {
+            @include rem((
+                padding-left: $gs-gutter,
+                padding-right: $gs-gutter
+            ));
         }
-        .global-navigation__child {
-            width: auto;
-            display: block;
+        @include mq(tablet) {
+            @include rem((
+                width: gs-span(2),
+                padding-left: $gs-gutter
+            ));
+        }
+    }
+    @include mq($to: tablet) {
+        .global-navigation__title,
+        .global-navigation__children {
             float: none;
-            padding-left: 0;
-            padding-right: 0;
+            display: block;
         }
     }
-    @include mq(desktop) {
-        .local-navigation__child,
-        .global-navigation__section {
-            width: 20%;
-
-            &:nth-child(n) {
-                clear: none;
-            }
-            &:nth-child(5n+1) {
-                clear: both;
-            }
+    .local-navigation__action {
+        display: block;
+        float: left;
+    }
+    .global-navigation__children {
+        @include box-sizing(border-box);
+        @include rem((
+            min-height: $gs-row-height,
+            padding-top: $gs-baseline/4
+        ));
+        @include mq($to: tablet) {
+            @include rem((
+                margin-left: -$gs-gutter/2,
+                margin-right: -$gs-gutter/2,
+                padding-left: $gs-gutter/2,
+                padding-right: $gs-gutter/2,
+                padding-bottom: $gs-baseline*.75
+            ));
+        }
+        @include mq(mobileLandscape, tablet) {
+            @include rem((
+                padding-left: $gs-gutter,
+                padding-right: $gs-gutter
+            ));
+        }
+        @include mq(tablet) {
+            @include rem((
+                padding-bottom: $gs-baseline/4,
+                padding-left: $gs-gutter/4,
+                border-left: (gs-span(2) + $gs-gutter) solid $c-global-navigation-title-background,
+                margin-left: -(gs-span(2) + $gs-gutter)
+            ));
         }
     }
-    @include mq(wide) {
-        .local-navigation__child,
-        .global-navigation__section {
-            width: 16.666666667%;
-
-            &:nth-child(n) {
-                clear: none;
-            }
-            &:nth-child(6n+1) {
-                clear: both;
-            }
+    @include mq(tablet) {
+        .global-navigation__action {
+            float: left;
+            @include rem((
+                line-height: $gs-row-height - $gs-baseline/2,
+                padding-left: $new-navigation-h-space-between-items/2,
+                padding-right: $new-navigation-h-space-between-items/2
+            ));
         }
     }
 }
 
 
-/* Home button
+/* Side breakpoint: navigation goes on two levels
    ========================================================================== */
 
-.i-home {
-    display: inline-block;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAgCAYAAAAIXrg4AAAAi0lEQVR42u2WwQ2AMAgAGcERHKEjOAojOFI3whEcwQ1QanwYHmgKxgeX8OSuH5LCU5gZ+WQ7poAjIp/4znrM4CUv7dWaRSK98lHJvSKy2AQ2tVvuHpEFfk/1l2vQks/cDxqH5ALqQ/KlXbs6pJCIkjtHgIPJQAY+CIBBBjKQgZ8EKDBA1y+OAgIk7h02tXtYwgpPngAAAABJRU5ErkJggg==
-') no-repeat 0 0;
-    @include background-size(cover);
-    @include rem((
-        width: 12px,
-        height: 16px
-    ));
+@include mq(wide) {
+    .new-navigation--has-local-navigation {
+        &.new-navigation--collapsed {
+            @include rem((
+                height: $gs-row-height * 2
+            ));
+        }
+        &.new-navigation--expanded {
+            .top-navigation__item {
+                visibility: hidden;
+            }
+        }
+        .top-navigation {
+            margin-left: 0 !important;
+        }
+        .top-navigation__item {
+            display: table-cell !important;
+        }
+        .top-navigation__item--home {
+            display: none !important;
+        }
+        .top-navigation__item--home + .top-navigation__item {
+            @include rem((
+                padding-left: $gs-gutter
+            ));
+        }
+
+        // Re-align signposting and local nav
+        .signposting,
+        .local-navigation {
+            display: table-cell;
+            @include rem((
+                height: $gs-row-height
+            ));
+        }
+        .local-navigation__action {
+            display: table-cell;
+            @include rem((
+                line-height: $gs-row-height
+            ));
+        }
+        .local-navigation {
+            @include rem((
+                padding-left: $gs-gutter/2
+            ));
+        }
+
+        // Re-order top nav on top of local nav
+        .new-navigation__container {
+            display: block !important;
+        }
+        .new-navigation__container--first {
+            background: $c-local-navigation-background;
+            @include rem((
+                border-top: $gs-row-height solid $c-top-navigation-background
+            ));
+        }
+        .new-navigation__container--second {
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+
+
+/* Page Skin: grow navigation up to wide and then shrink back to desktop
+   ========================================================================== */
+
+.new-navigation--has-page-skin {
+    @include mq(wide) {
+        @include rem((
+            max-width: gs-span(12) + $gs-gutter * 2
+        ));
+    }
 }
 
 
@@ -733,6 +565,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
    ========================================================================== */
 
 .new-navigation__toggle {
+    z-index: 2;
     position: absolute;
     right: 0;
     top: 0;
@@ -740,8 +573,8 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
     font-weight: 900;
     @include rem((
         min-width: $new-navigation-toggler-width,
-        padding-left: $gs-gutter/4,
-        padding-right: $gs-gutter/4,
+        padding-left: $gs-gutter,
+        padding-right: $gs-gutter/2,
     ));
     background: $c-navigation-toggle-background;
     -moz-background-clip: padding-box;
@@ -786,79 +619,30 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
     display: inline;
 }
 
-.global-navigation__children {
-    @include mq($to: tablet) {
-        &.global-navigation__children--collapsed {
-            display: none;
-        }
-        &.global-navigation__children--expanded {
-            display: block;
-        }
-    }
-}
-.global-navigation__toggle-children {
-    position: absolute;
-    right: 0;
-    display: block;
-    font-family: $sans-serif;
-    @include rem((
-        font-size: 12px,
-        line-height: 20px,
-        padding-left: $gs-gutter,
-        padding-right: $gs-gutter/2,
-        padding-bottom: 6px
-    ));
-    font-weight: 300;
-    color: #ffffff;
+//.global-navigation__toggle-children {
+//    position: absolute;
+//    right: 0;
+//    display: block;
+//    font-family: $sans-serif;
+//    @include rem((
+//        font-size: 12px,
+//        line-height: 20px,
+//        padding-left: $gs-gutter,
+//        padding-right: $gs-gutter/2,
+//        padding-bottom: 6px
+//    ));
+//    font-weight: 300;
+//    color: #ffffff;
+//
+//    @include mq(tablet) {
+//        display: none;
+//    }
+//
+//    .new-navigation--collapsed & {
+//        display: none;
+//    }
+//}
 
-    @include mq(tablet) {
-        display: none;
-    }
-
-    .new-navigation--collapsed & {
-        display: none;
-    }
-}
-
-.honest-burger {
-    width: 8px;
-    height: 18px;
-    display: block;
-    overflow: hidden;
-    margin-top: 1px;
-
-    .new-navigation--expanded & {
-        display: none;
-    }
-}
-.honest-burger i {
-    border-top: 2px solid rgba(#ffffff, .9);
-    display: block;
-    margin-top: 3px;
-}
-
-.new-navigation__toggle--has-icon {
-    @include rem((
-        min-width: 48px,
-        padding-left: 16px,
-        padding-right: 8px
-    ));
-
-
-    @include mq(tablet) {
-        @include rem((
-            min-width: $new-navigation-toggler-width-full
-        ));
-    }
-
-}
-.new-navigation__toggle-burger {
-    position: absolute;
-    left: 0;
-    @include rem((
-        top: 8px
-    ));
-}
 .new-navigation__toggle-arrow {
     position: absolute;
     @include rem((
@@ -881,7 +665,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
     border-top-color: #ffffff;
     @include rem((
         border-width: 4px,
-        margin-left: -4px
+        margin-left: -2px
     ));
 
     .new-navigation--expanded & {
@@ -891,59 +675,7 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
         ));
     }
 }
-
-
-/* Variant A: no local navigation / with signposting
-   ========================================================================== */
-
-.new-navigation--hide-local-navigation {
-    &.new-navigation--collapsed {
-        .local-navigation {
-            display: none;
-        }
-        .global-navigation {
-            border-left: 0;
-            @include rem((
-                margin-left: -$new-navigation-h-space-between-items
-            ));
-        }
-    }
-}
-
-.new-navigation__signposting {
-    @include f-header;
-    border-bottom: 1px solid guss-colour(neutral-5);
-    @include rem((
-        padding-left: $gs-gutter/2,
-        line-height: gs-height(1)
-    ));
-    @include mq(mobileLandscape) {
-        @include rem((
-            padding-left: $gs-gutter
-        ));
-    }
-}
-.signposting__action {
-    color: $c-new-navigation-signposting-action;
-}
-.signposting__action,
-.signposting__separator {
-    @include rem((
-        margin-right: $new-navigation-h-space-between-items/2
-    ));
-}
-
-.global-navigation__children {
-    @include mq($to: tablet) {
-        &.global-navigation__children--collapsed {
-            display: none;
-        }
-        &.global-navigation__children--expanded {
-            display: block;
-        }
-    }
-}
-.global-navigation__toggle-children {
+/* .global-navigation__toggle-children {
     position: absolute;
     right: 0;
     display: block;
@@ -954,10 +686,10 @@ $c-new-navigation-signposting-action: guss-colour(neutral-1) !default;
         padding-left: $gs-gutter,
         padding-bottom: 8px
     ));
-    font-weight: bold;
     color: rgba(#ffffff, .5);
 
     @include mq(tablet) {
         display: none;
     }
 }
+ */
