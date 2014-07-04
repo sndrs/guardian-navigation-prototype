@@ -10,16 +10,16 @@ $new-navigation-toggler-width-full: 130px !default;
 
 $theme: default;
 
-$c-navigation-background: #5094CF !global;
+$c-navigation-background: #5094cf !global;
 $c-navigation-action: guss-colour(neutral-1) !global;
 
 $c-signposting-action: guss-colour(guardian-brand) !global;
-$c-signposting-background: #DDF7FF !global;
+$c-signposting-background: #ddf7ff !global;
 
 $c-top-navigation-action: #ffffff !global;
 $c-top-navigation-background: guss-colour(guardian-brand) !global;
 
-$c-local-navigation-background: #2479C3 !global;
+$c-local-navigation-background: #2479c3 !global;
 $c-local-navigation-action: #ffffff !global;
 
 $c-local-navigation-parent-background: guss-colour(guardian-brand) !global;
@@ -28,13 +28,13 @@ $c-local-navigation-current-background: $c-local-navigation-parent-background !g
 $c-local-navigation-current: #ffffff !global;
 $c-local-navigation-current-border: 0 !global;
 
-$c-global-navigation-background: #2479C3 !global;
+$c-global-navigation-background: #2479c3 !global;
 $c-global-navigation-title: #ffffff !global;
 $c-global-navigation-title-background: guss-colour(guardian-brand) !global;
 $c-global-navigation-action: #ffffff !global;
 $c-global-navigation-border: rgba(#ffffff, .3) !global;
 
-$c-navigation-toggle-background: #2479C3 !global;
+$c-navigation-toggle-background: #2479c3 !global;
 $c-navigation-toggle-icon: #ffffff !global;
 $c-navigation-toggle-shadow: rgba(#000000, .333333) !global;
 
@@ -70,12 +70,20 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
     overflow: hidden;
     clear: both;
     background: $c-navigation-background;
-    @include fs-header(1);
     @include rem((
-        height: $gs-row-height,
+        height: $gs-row-height
+    ));
+}
+.top-navigation,
+.local-navigation,
+.global-navigation,
+.signposting {
+    @include f-bodyCopy;
+    font-weight: bold;
+    @include rem((
+        font-size: 16px,
         line-height: $gs-row-height
     ));
-    font-weight: bold;
 
     a {
         &,
@@ -178,7 +186,7 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
             margin-top: $_dim-arrow-my,
             border-top: $_dim-arrow-h solid transparent,
             border-bottom: $_dim-arrow-h solid transparent,
-            border-left: $_dim-arrow-w solid #2479C3
+            border-left: $_dim-arrow-w solid #2479c3
         ));
     }
     &:before {
@@ -211,13 +219,14 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
 }
 .global-navigation__children {
     overflow: hidden;
+    background: $c-local-navigation-background;
+
     @include mq($to: tablet) {
         @include rem((
             font-size: 14px,
         ));
         line-height: 2;
     }
-    background: $c-local-navigation-background;
 }
 .local-navigation__item,
 .top-navigation__item {
@@ -376,7 +385,7 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
             display: none;
         }
     }
-    
+
     .global-navigation {
         display: none;
     }
@@ -461,36 +470,37 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
             float: left;
         }
     }
-    .local-navigation__item,
-    .global-navigation__child {
-        @include mq($to: tablet) {
-            float: left;
-            width: 50%;
-            padding-right: 0;
-            @include box-sizing(border-box);
-            @include rem((
-                padding-left: $gs-gutter/2,
-                padding-right: $gs-gutter/2
-            ));
-
-            &:nth-child(2n+1) {
-                clear: both;
-            }
-        }
-        @include mq(mobileLandscape, tablet) {
-            width: 33.3333333333%;
-
-            &:nth-child(n) {
-                clear: none;
-            }
-            &:nth-child(3n+1) {
-                clear: both;
-            }
-        }
-    }
     .local-navigation__action {
         display: block;
         float: left;
+    }
+}
+
+.new-navigation--expanded .local-navigation__item,
+.global-navigation__child {
+    @include mq($to: tablet) {
+        float: left;
+        width: 50%;
+        padding-right: 0;
+        @include box-sizing(border-box);
+        @include rem((
+            padding-left: $gs-gutter/2,
+            padding-right: $gs-gutter/2
+        ));
+
+        &:nth-child(2n+1) {
+            clear: both;
+        }
+    }
+    @include mq(mobileLandscape, tablet) {
+        width: 33.3333333333%;
+
+        &:nth-child(n) {
+            clear: none;
+        }
+        &:nth-child(3n+1) {
+            clear: both;
+        }
     }
 }
 
@@ -581,7 +591,12 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
     right: 0;
     top: 0;
     @include box-sizing(border-box);
+    @include f-header;
     font-weight: 900;
+    @include rem((
+        font-size: 16px,
+        line-height: $gs-row-height
+    ));
     @include rem((
         min-width: $new-navigation-toggler-width,
         padding-left: $gs-gutter,
@@ -630,30 +645,6 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
     display: inline;
 }
 
-//.global-navigation__toggle-children {
-//    position: absolute;
-//    right: 0;
-//    display: block;
-//    font-family: $sans-serif;
-//    @include rem((
-//        font-size: 12px,
-//        line-height: 20px,
-//        padding-left: $gs-gutter,
-//        padding-right: $gs-gutter/2,
-//        padding-bottom: 6px
-//    ));
-//    font-weight: 300;
-//    color: #ffffff;
-//
-//    @include mq(tablet) {
-//        display: none;
-//    }
-//
-//    .new-navigation--collapsed & {
-//        display: none;
-//    }
-//}
-
 .new-navigation__toggle-arrow {
     position: absolute;
     @include rem((
@@ -686,21 +677,3 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
         ));
     }
 }
-/* .global-navigation__toggle-children {
-    position: absolute;
-    right: 0;
-    display: block;
-    font-family: $sans-serif;
-    @include rem((
-        font-size: 12px,
-        line-height: 20px,
-        padding-left: $gs-gutter,
-        padding-bottom: 8px
-    ));
-    color: rgba(#ffffff, .5);
-
-    @include mq(tablet) {
-        display: none;
-    }
-}
- */
