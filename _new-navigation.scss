@@ -58,6 +58,31 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
             }
         }
     }
+    .nav--guardian-services {
+        @include mq(tablet) {
+            float: right;
+            text-align: right;
+            @include rem((
+                padding-top: 7px,
+                width: gs-span(3)
+            ));
+            .nav__link {
+                border-top: 0;
+            }
+        }
+    }
+    .navigation-aside {
+        @include mq(tablet) {
+            float: left;
+            @include rem((
+                width: gs-span(4)
+            ));
+            clear: none;
+        }
+    }
+    .nav--guardian-services .nav__link {
+        top: 0;
+    }
 }
 
 
@@ -98,6 +123,10 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
 .new-navigation__main {
     position: relative;
     background: $c-top-navigation-background;
+}
+.new-navigation__expandable {
+    background: #ffffff;
+    overflow: hidden;
 }
 
 .signposting,
@@ -240,7 +269,8 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
     ));
 }
 .signposting__item--home,
-.top-navigation__item--home {
+.top-navigation__item--home,
+.top-navigation__item--current.top-navigation__item--home + .top-navigation__item {
     @include rem((
         padding-left: $gs-gutter/2
     ));
@@ -357,14 +387,17 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
         ));
     }
 }
+.new-navigation .global-navigation__section--home,
 .global-navigation__section--current {
     display: none;
 }
+
 
 /* State: collapsed
    ========================================================================== */
 
 .new-navigation--collapsed {
+    .top-navigation__item--current.top-navigation__item--home,
     &.new-navigation--has-local-navigation .top-navigation__item--home {
         display: none;
     }
@@ -386,7 +419,7 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
         }
     }
 
-    .global-navigation {
+    .new-navigation__expandable {
         display: none;
     }
 
@@ -510,6 +543,18 @@ $new-navigation-h-space-between-items: $gs-gutter !global;
 
 @include mq(wide) {
     .new-navigation--has-local-navigation {
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            left: 0;
+            right: 0;
+            @include rem((
+                top: $gs-row-height
+            ));
+            height: 1px;
+            background: rgba(#ffffff, .3);
+        }
         &.new-navigation--collapsed {
             @include rem((
                 height: $gs-row-height * 2
